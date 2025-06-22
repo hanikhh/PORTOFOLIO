@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SapaSehat Case Study | Hanik Hatul Halimah</title>
+
+    <!-- Chosen Palette: Calm Blue Tech -->
+    <!-- Application Structure Plan: The SPA uses a tab-based navigation ('The Challenge', 'The Process', 'The Features', 'Conclusion') to break down the linear case study into explorable, thematic sections. This non-linear structure encourages user interaction and focused content consumption over passive scrolling. The 'Process' section is further made interactive with clickable steps, revealing details for each stage, which is more engaging than a static list. This design choice makes the complex information digestible and highlights the structured design thinking behind the project. -->
+    <!-- Visualization & Content Choices: 
+        - Project Overview (Stats): Goal: Inform. Method: Styled HTML metric cards. Interaction: Static. Justification: Provides immediate, high-level context. Library: Tailwind CSS.
+        - The Challenge (Problems): Goal: Inform. Method: Icon-driven content cards in a grid. Interaction: Static. Justification: Clearly segments the core problems for easy reading. Library: Tailwind CSS.
+        - Design Process (Diagram): Goal: Organize/Explain. Method: An interactive, tab-like diagram made with HTML/CSS. Interaction: On-click content swapping via JS. Justification: Actively engages the user to explore the design stages, making the process more memorable than a simple list. Chart.js was not used as there is no quantitative data to visualize; an interactive diagram is a more effective method for this qualitative information. Library: Vanilla JS, Tailwind CSS.
+        - Feature Deep Dive (Cards): Goal: Explain/Detail. Method: Expandable content cards in a grid. Interaction: On-click accordion-style reveal via JS. Justification: Keeps the initial view clean while allowing users to drill down into details they find interesting. Library: Vanilla JS, Tailwind CSS.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9; /* slate-100 */
+        }
+        .tab-btn.active {
+            border-color: #0284c7; /* sky-600 */
+            color: #0284c7; /* sky-600 */
+            font-weight: 600;
+        }
+        .process-step.active {
+            background-color: #0284c7; /* sky-600 */
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="text-slate-700">
+
+    <main class="container mx-auto p-4 md:p-8">
+        
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-800 mb-2">Case Study: SapaSehat Health App</h1>
+            <p class="text-lg text-slate-500">Designing a holistic mobile experience to empower users in proactively managing their personal health journey.</p>
+        </header>
+
+        <!-- Project Overview Stats -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 text-center">
+                <h3 class="text-sm font-semibold text-slate-500 uppercase mb-1">My Role</h3>
+                <p class="text-xl font-bold text-slate-800">Lead UI/UX Designer</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 text-center">
+                <h3 class="text-sm font-semibold text-slate-500 uppercase mb-1">Tools Used</h3>
+                <p class="text-xl font-bold text-slate-800">Figma</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 text-center">
+                <h3 class="text-sm font-semibold text-slate-500 uppercase mb-1">Project Timeline</h3>
+                <p class="text-xl font-bold text-slate-800">4 Days</p>
+            </div>
+        </section>
+
+        <!-- Main Interactive Content Area -->
+        <div class="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+            <!-- Tab Navigation -->
+            <nav class="border-b border-slate-200">
+                <div class="flex flex-wrap -mb-px justify-center">
+                    <button class="tab-btn active text-lg py-4 px-6 border-b-2 border-transparent hover:border-slate-300 transition-colors" data-tab="challenge">The Challenge</button>
+                    <button class="tab-btn text-lg py-4 px-6 border-b-2 border-transparent hover:border-slate-300 transition-colors" data-tab="process">The Process</button>
+                    <button class="tab-btn text-lg py-4 px-6 border-b-2 border-transparent hover:border-slate-300 transition-colors" data-tab="features">The Features</button>
+                    <button class="tab-btn text-lg py-4 px-6 border-b-2 border-transparent hover:border-slate-300 transition-colors" data-tab="conclusion">Conclusion</button>
+                </div>
+            </nav>
+
+            <div class="p-6 md:p-10">
+                <!-- Content for "The Challenge" Tab -->
+                <section id="challenge-content" class="content-section active">
+                    <div class="text-center mb-8">
+                        <h2 class="text-3xl font-bold text-slate-800 mb-2">Uncovering the Core Problems</h2>
+                        <p class="max-w-3xl mx-auto text-slate-500">Through research, I identified a significant gap between the desire to be healthy and the tools available. The challenge was to design an ecosystem of trust and simplicity.</p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                            <span class="text-3xl mb-3 block">🧠</span>
+                            <h3 class="font-bold text-xl mb-2 text-slate-800">Cognitive Overload</h3>
+                            <p class="text-slate-600">Patients with chronic conditions feel overwhelmed managing complex medication schedules, leading to missed doses.</p>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                            <span class="text-3xl mb-3 block">⏱️</span>
+                            <h3 class="font-bold text-xl mb-2 text-slate-800">Accessibility Barrier</h3>
+                            <p class="text-slate-600">Getting reliable medical advice for non-emergencies is often inefficient and time-consuming.</p>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                            <span class="text-3xl mb-3 block">👥</span>
+                            <h3 class="font-bold text-xl mb-2 text-slate-800">Emotional Isolation</h3>
+                            <p class="text-slate-600">Patients lack a safe, empathetic space to share their health journeys and learn from others.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Content for "The Process" Tab -->
+                <section id="process-content" class="content-section">
+                    <div class="text-center mb-8">
+                        <h2 class="text-3xl font-bold text-slate-800 mb-2">A User-Centered Design Strategy</h2>
+                        <p class="max-w-3xl mx-auto text-slate-500">My approach centered on three principles: Clarity, Trust, and Engagement. I developed a user persona, "Sasa", to guide every design decision.</p>
+                    </div>
+                    
+                    <!-- Interactive Process Steps -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                        <button class="process-step active p-4 text-left rounded-lg bg-slate-100 hover:bg-slate-200 transition-all duration-300" data-process="empathize">
+                            <span class="text-sm font-bold text-sky-600">STEP 1</span>
+                            <h4 class="text-lg font-semibold">Empathize & Define</h4>
+                        </button>
+                        <button class="process-step p-4 text-left rounded-lg bg-slate-100 hover:bg-slate-200 transition-all duration-300" data-process="ideate">
+                            <span class="text-sm font-bold text-sky-600">STEP 2</span>
+                            <h4 class="text-lg font-semibold">Ideate & Structure</h4>
+                        </button>
+                        <button class="process-step p-4 text-left rounded-lg bg-slate-100 hover:bg-slate-200 transition-all duration-300" data-process="design">
+                            <span class="text-sm font-bold text-sky-600">STEP 3</span>
+                            <h4 class="text-lg font-semibold">Design & Prototype</h4>
+                        </button>
+                    </div>
+
+                    <!-- Process Content Display Area -->
+                    <div id="process-display" class="bg-slate-50 p-6 rounded-lg border border-slate-200 min-h-[200px] transition-all duration-300">
+                        <!-- Content will be injected by JS -->
+                    </div>
+                </section>
+
+                <!-- Content for "The Features" Tab -->
+                <section id="features-content" class="content-section">
+                    <div class="text-center mb-8">
+                         <h2 class="text-3xl font-bold text-slate-800 mb-2">Feature Deep Dive</h2>
+                         <p class="max-w-3xl mx-auto text-slate-500">Each feature was designed with a specific user problem in mind, focusing on clear and effective solutions.</p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="feature-card bg-slate-50 p-6 rounded-lg border border-slate-200">
+                            <h3 class="font-bold text-xl mb-2 text-slate-800">Smart Medication Reminders</h3>
+                            <p class="text-slate-600 mb-4">A dedicated module to simplify complex medication schedules and reduce missed doses.</p>
+                            <div class="feature-details hidden mt-4 pt-4 border-t border-slate-200">
+                                <h4 class="font-semibold text-slate-800">Problem</h4>
+                                <p class="text-sm text-slate-600 mb-2">Standard alarm apps are not tailored for medical needs.</p>
+                                <h4 class="font-semibold text-slate-800">Design Solution</h4>
+                                <p class="text-sm text-slate-600">The UI allows inputting dosage, frequency, and schedule type. A clear timeline view provides a daily overview, reducing ambiguity and empowering user control.</p>
+                            </div>
+                            <button class="toggle-details font-semibold text-sky-600 hover:text-sky-700 transition-colors">Learn More</button>
+                        </div>
+                        <div class="feature-card bg-slate-50 p-6 rounded-lg border border-slate-200">
+                            <h3 class="font-bold text-xl mb-2 text-slate-800">On-Demand Doctor Consultation</h3>
+                            <p class="text-slate-600 mb-4">A seamless, chat-based interface to get professional medical advice quickly and conveniently.</p>
+                             <div class="feature-details hidden mt-4 pt-4 border-t border-slate-200">
+                                <h4 class="font-semibold text-slate-800">Problem</h4>
+                                <p class="text-sm text-slate-600 mb-2">Getting professional medical advice for minor issues is inconvenient.</p>
+                                <h4 class="font-semibold text-slate-800">Design Solution</h4>
+                                <p class="text-sm text-slate-600">Doctor profiles with ratings build trust. The flow from selection to payment to chat is frictionless, ensuring users get help fast.</p>
+                            </div>
+                            <button class="toggle-details font-semibold text-sky-600 hover:text-sky-700 transition-colors">Learn More</button>
+                        </div>
+                        <div class="feature-card bg-slate-50 p-6 rounded-lg border border-slate-200">
+                            <h3 class="font-bold text-xl mb-2 text-slate-800">The Community Hub</h3>
+                            <p class="text-slate-600 mb-4">A moderated forum that acts as a safe space for users to share experiences and find peer support.</p>
+                            <div class="feature-details hidden mt-4 pt-4 border-t border-slate-200">
+                                <h4 class="font-semibold text-slate-800">Problem</h4>
+                                <p class="text-sm text-slate-600 mb-2">Users need peer support and a space to share experiences.</p>
+                                <h4 class="font-semibold text-slate-800">Design Solution</h4>
+                                <p class="text-sm text-slate-600">A simple, feed-style layout with topics, likes, and replies encourages positive interaction and makes it easy to find relevant information.</p>
+                            </div>
+                            <button class="toggle-details font-semibold text-sky-600 hover:text-sky-700 transition-colors">Learn More</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Content for "Conclusion" Tab -->
+                <section id="conclusion-content" class="content-section">
+                    <div class="text-center">
+                        <h2 class="text-3xl font-bold text-slate-800 mb-4">Conclusion & Personal Reflection</h2>
+                        <div class="max-w-3xl mx-auto space-y-4 text-slate-600 text-lg">
+                           <p>The SapaSehat project was a profound learning experience in designing for a domain where empathy and trust are paramount. The key takeaway was the importance of <b>simplifying complexity</b>.</p>
+                           <p>The final design successfully integrates multiple essential health features into a single, cohesive, and non-intimidating application. It stands as a testament to how user-centric design can create tools that genuinely support user well-being.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Data for the interactive process section
+    const processData = {
+        empathize: {
+            title: "Empathize & Define",
+            content: "I started by mapping the user persona's journey, identifying her frustrations (e.g., forgetting her inhaler, uncertainty about symptoms) and needs (e.g., quick access to information, discreet reminders). This phase was crucial for building a strong foundation based on real user needs."
+        },
+        ideate: {
+            title: "Ideate & Structure",
+            content: "I sketched low-fidelity wireframes, focusing on a clear and logical information architecture. The primary goal was to ensure any core feature could be accessed within three taps from the home screen, minimizing user friction and cognitive load."
+        },
+        design: {
+            title: "Design & Prototype",
+            content: "I translated the wireframes into a high-fidelity UI in Figma, utilizing a calming color palette to instill trust. I paid close attention to accessibility standards, ensuring legible fonts and clear iconography. The process culminated in a fully interactive prototype to test and validate the user flows."
+        }
+    };
+
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const contentSections = document.querySelectorAll('.content-section');
+    const processSteps = document.querySelectorAll('.process-step');
+    const processDisplay = document.getElementById('process-display');
+    const featureCards = document.querySelectorAll('.feature-card');
+
+    // Tab navigation logic
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const tab = button.dataset.tab;
+
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            contentSections.forEach(section => {
+                section.classList.remove('active');
+                if (section.id === `${tab}-content`) {
+                    section.classList.add('active');
+                }
+            });
+        });
+    });
+
+    // Function to update process display
+    function updateProcessContent(step) {
+        const data = processData[step];
+        processDisplay.innerHTML = `
+            <h3 class="text-2xl font-bold text-slate-800 mb-2">${data.title}</h3>
+            <p class="text-slate-600">${data.content}</p>
+        `;
+    }
+
+    // Interactive process steps logic
+    processSteps.forEach(step => {
+        step.addEventListener('click', () => {
+            const process = step.dataset.process;
+            processSteps.forEach(s => s.classList.remove('active'));
+            step.classList.add('active');
+            updateProcessContent(process);
+        });
+    });
+    
+    // Initialize first process step content
+    updateProcessContent('empathize');
+
+    // Accordion logic for feature cards
+    featureCards.forEach(card => {
+        const button = card.querySelector('.toggle-details');
+        const details = card.querySelector('.feature-details');
+        button.addEventListener('click', () => {
+            const isHidden = details.classList.toggle('hidden');
+            button.textContent = isHidden ? 'Learn More' : 'Show Less';
+        });
+    });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoGoals Case Study | Hanik Hatul Halimah</title>
+
+    <!-- Chosen Palette: Energetic Fintech -->
+    <!-- Application Structure Plan: The SPA is structured with tab-based navigation ('The Challenge', 'The Process', 'The Features', 'Conclusion') to convert the linear report into an interactive experience. This allows users to explore sections based on their interest, rather than scrolling through a long document. Key interactions include clickable process steps that reveal detailed descriptions and expandable feature cards (accordions). This design makes the case study more engaging and effectively showcases the structured thinking behind the project by allowing users to actively uncover the information. -->
+    <!-- Visualization & Content Choices: 
+        - Project Overview (Stats): Goal: Inform. Method: Styled HTML metric cards. Interaction: Static. Justification: Offers immediate, scannable project context. Library: Tailwind CSS.
+        - The Challenge (Problems): Goal: Inform. Method: Icon-driven content cards in a grid. Interaction: Static. Justification: Clearly segments the core user pain points for better comprehension. Library: Tailwind CSS.
+        - Design Process (Diagram): Goal: Organize/Explain. Method: An interactive, multi-step diagram built with HTML/CSS. Interaction: On-click content swapping via JS. Justification: Engages the user to actively explore the design stages, making the process more memorable than a static list. Chart.js is not used as there is no quantitative data; an interactive diagram is superior for this qualitative information. Library: Vanilla JS, Tailwind CSS.
+        - Feature Deep Dive (Cards): Goal: Explain/Detail. Method: Expandable content cards in a grid (accordion). Interaction: On-click reveal of details. Justification: Keeps the UI clean by default, empowering users to drill down into the specifics they care about most. Library: Vanilla JS, Tailwind CSS.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9; /* slate-100 */
+        }
+        .tab-btn.active {
+            border-color: #6d28d9; /* violet-700 */
+            color: #6d28d9; /* violet-700 */
+            font-weight: 600;
+        }
+        .process-step.active {
+            background-color: #6d28d9; /* violet-700 */
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="text-slate-700">
+
+    <main class="container mx-auto p-4 md:p-8">
+        
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-800 mb-2">Case Study: GoGoals Group Saving App</h1>
+            <p class="text-lg text-slate-500">Designing a social finance app to make group saving transparent, motivating, and fun.</p>
+        </header>
+
+        <!-- Project Overview Stats -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 text-center">
+                <h3 class="text-sm font-semibold text-slate-500 uppercase mb-1">My Role</h3>
+                <p class="text-xl font-bold text-slate-800">Lead UI/UX Designer</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 text-center">
+                <h3 class="text-sm font-semibold text-slate-500 uppercase mb-1">Tools Used</h3>
+                <p class="text-xl font-bold text-slate-800">Figma</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 text-center">
+                <h3 class="text-sm font-semibold text-slate-500 uppercase mb-1">Project Timeline</h3>
+                <p class="text-xl font-bold text-slate-800">3 Days</p>
+            </div>
+        </section>
+
+        <!-- Main Interactive Content Area -->
+        <div class="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+            <!-- Tab Navigation -->
+            <nav class="border-b border-slate-200">
+                <div class="flex flex-wrap -mb-px justify-center">
+                    <button class="tab-btn active text-lg py-4 px-6 border-b-2 border-transparent hover:border-slate-300 transition-colors" data-tab="challenge">The Challenge</button>
+                    <button class="tab-btn text-lg py-4 px-6 border-b-2 border-transparent hover:border-slate-300 transition-colors" data-tab="process">The Process</button>
+                    <button class="tab-btn text-lg py-4 px-6 border-b-2 border-transparent hover:border-slate-300 transition-colors" data-tab="features">The Features</button>
+                    <button class="tab-btn text-lg py-4 px-6 border-b-2 border-transparent hover:border-slate-300 transition-colors" data-tab="conclusion">Conclusion</button>
+                </div>
+            </nav>
+
+            <div class="p-6 md:p-10">
+                <!-- Content for "The Challenge" Tab -->
+                <section id="challenge-content" class="content-section active">
+                    <div class="text-center mb-8">
+                        <h2 class="text-3xl font-bold text-slate-800 mb-2">Why Is Group Saving So Hard?</h2>
+                        <p class="max-w-3xl mx-auto text-slate-500">My research identified four key friction points in the group-saving process. The core challenge was to replace social friction with social motivation.</p>
+                    </div>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                            <span class="text-3xl mb-3 block">❓</span>
+                            <h3 class="font-bold text-xl mb-2 text-slate-800">Lack of Transparency</h3>
+                            <p class="text-slate-600">Manual tracking creates uncertainty. Members are often unsure of the total amount saved or who has yet to contribute.</p>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                            <span class="text-3xl mb-3 block">📉</span>
+                            <h3 class="font-bold text-xl mb-2 text-slate-800">Diminishing Motivation</h3>
+                            <p class="text-slate-600">Long-term goals suffer from a lack of visible progress. Without regular positive reinforcement, initial excitement fades.</p>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                            <span class="text-3xl mb-3 block">😬</span>
+                            <h3 class="font-bold text-xl mb-2 text-slate-800">Social Awkwardness</h3>
+                            <p class="text-slate-600">Manually chasing friends for money is uncomfortable and can strain relationships.</p>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                            <span class="text-3xl mb-3 block">🤯</span>
+                            <h3 class="font-bold text-xl mb-2 text-slate-800">Logistical Nightmare</h3>
+                            <p class="text-slate-600">Collecting and managing cash or multiple bank transfers is inefficient and difficult to track.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Content for "The Process" Tab -->
+                <section id="process-content" class="content-section">
+                    <div class="text-center mb-8">
+                        <h2 class="text-3xl font-bold text-slate-800 mb-2">A Design Built on Transparency & Gamification</h2>
+                        <p class="max-w-3xl mx-auto text-slate-500">My strategy focused on making saving feel less like a chore and more like a collaborative game, guided by the user persona "Alex".</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                        <button class="process-step active p-4 text-left rounded-lg bg-slate-100 hover:bg-slate-200 transition-all duration-300" data-process="empathize">
+                            <span class="text-sm font-bold text-violet-600">STEP 1</span>
+                            <h4 class="text-lg font-semibold">Empathize & Define</h4>
+                        </button>
+                        <button class="process-step p-4 text-left rounded-lg bg-slate-100 hover:bg-slate-200 transition-all duration-300" data-process="ideate">
+                            <span class="text-sm font-bold text-violet-600">STEP 2</span>
+                            <h4 class="text-lg font-semibold">Ideate & Structure</h4>
+                        </button>
+                        <button class="process-step p-4 text-left rounded-lg bg-slate-100 hover:bg-slate-200 transition-all duration-300" data-process="design">
+                            <span class="text-sm font-bold text-violet-600">STEP 3</span>
+                            <h4 class="text-lg font-semibold">Design & Prototype</h4>
+                        </button>
+                    </div>
+
+                    <div id="process-display" class="bg-slate-50 p-6 rounded-lg border border-slate-200 min-h-[200px] transition-all duration-300">
+                    </div>
+                </section>
+
+                <!-- Content for "The Features" Tab -->
+                <section id="features-content" class="content-section">
+                    <div class="text-center mb-8">
+                         <h2 class="text-3xl font-bold text-slate-800 mb-2">Feature Deep Dive</h2>
+                         <p class="max-w-3xl mx-auto text-slate-500">Each feature was meticulously designed to solve a specific problem identified during the research phase.</p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="feature-card bg-slate-50 p-6 rounded-lg border border-slate-200">
+                            <h3 class="font-bold text-xl mb-2 text-slate-800">The "Go-Goal" Dashboard</h3>
+                            <p class="text-slate-600 mb-4">The heart of the app, providing an immediate and clear overview of group progress.</p>
+                            <div class="feature-details hidden mt-4 pt-4 border-t border-slate-200">
+                                <h4 class="font-semibold text-slate-800">Problem</h4>
+                                <p class="text-sm text-slate-600 mb-2">Users need an immediate, clear overview of their progress.</p>
+                                <h4 class="font-semibold text-slate-800">Design Solution</h4>
+                                <p class="text-sm text-slate-600">A large, visually dominant progress bar and key metrics ("Collected", "Target", "Remaining") are displayed prominently, ensuring every member is always on the same page.</p>
+                            </div>
+                            <button class="toggle-details font-semibold text-violet-600 hover:text-violet-700 transition-colors">Learn More</button>
+                        </div>
+                        <div class="feature-card bg-slate-50 p-6 rounded-lg border border-slate-200">
+                            <h3 class="font-bold text-xl mb-2 text-slate-800">Transparent Contribution Tracking</h3>
+                            <p class="text-slate-600 mb-4">A system to create accountability without conflict by making all contributions visible to the group.</p>
+                             <div class="feature-details hidden mt-4 pt-4 border-t border-slate-200">
+                                <h4 class="font-semibold text-slate-800">Problem</h4>
+                                <p class="text-sm text-slate-600 mb-2">How to create accountability without creating conflict.</p>
+                                <h4 class="font-semibold text-slate-800">Design Solution</h4>
+                                <p class="text-sm text-slate-600">A "Team" section transparently lists each member and their exact contribution status. This visibility introduces positive social pressure and eliminates the need for a manual enforcer.</p>
+                            </div>
+                            <button class="toggle-details font-semibold text-violet-600 hover:text-violet-700 transition-colors">Learn More</button>
+                        </div>
+                        <div class="feature-card bg-slate-50 p-6 rounded-lg border border-slate-200">
+                            <h3 class="font-bold text-xl mb-2 text-slate-800">Gamified Milestones & Feed</h3>
+                            <p class="text-slate-600 mb-4">An activity feed and notifications to maintain momentum and make saving feel rewarding.</p>
+                            <div class="feature-details hidden mt-4 pt-4 border-t border-slate-200">
+                                <h4 class="font-semibold text-slate-800">Problem</h4>
+                                <p class="text-sm text-slate-600 mb-2">How to maintain momentum over several weeks or months.</p>
+                                <h4 class="font-semibold text-slate-800">Design Solution</h4>
+                                <p class="text-sm text-slate-600">The app automatically triggers celebratory notifications for milestones (e.g., "50% funded!"). The activity feed reinforces positive behavior by highlighting recent contributions.</p>
+                            </div>
+                            <button class="toggle-details font-semibold text-violet-600 hover:text-violet-700 transition-colors">Learn More</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Content for "Conclusion" Tab -->
+                <section id="conclusion-content" class="content-section">
+                    <div class="text-center">
+                        <h2 class="text-3xl font-bold text-slate-800 mb-4">Conclusion & Personal Reflection</h2>
+                        <div class="max-w-3xl mx-auto space-y-4 text-slate-600 text-lg">
+                           <p>The GoGoals project was a valuable exercise in applying psychological principles to UI/UX design. The key insight was that for financial apps, especially social ones, the <b>feeling is as important as the function</b>.</p>
+                           <p>By focusing on transparency, positive reinforcement, and gamification, the final design successfully transforms an anxiety-inducing task into a fun, collaborative, and ultimately more successful endeavor.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const processData = {
+        empathize: {
+            title: "Empathize & Define",
+            content: "I mapped Alex's journey, noting his key frustrations: opaque progress, the discomfort of asking friends for money, and the lack of a central 'source of truth'. This foundational step ensured the solutions were tied directly to real-world user pain points."
+        },
+        ideate: {
+            title: "Ideate & Structure",
+            content: "I architected the app around a simple, powerful core loop: Create Goal → Invite → Contribute → Track → Celebrate. This structure ensures the user experience is intuitive and goal-oriented from the very start of their journey."
+        },
+        design: {
+            title: "Design & Prototype",
+            content: "Using Figma, I designed a vibrant and energetic UI with a palette of purples and yellows to evoke excitement and optimism. The interface prioritizes data visualization, especially progress bars, to provide instant, satisfying feedback."
+        }
+    };
+
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const contentSections = document.querySelectorAll('.content-section');
+    const processSteps = document.querySelectorAll('.process-step');
+    const processDisplay = document.getElementById('process-display');
+    const featureCards = document.querySelectorAll('.feature-card');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const tab = button.dataset.tab;
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            contentSections.forEach(section => {
+                section.classList.remove('active');
+                if (section.id === `${tab}-content`) {
+                    section.classList.add('active');
+                }
+            });
+        });
+    });
+
+    function updateProcessContent(step) {
+        const data = processData[step];
+        processDisplay.innerHTML = `
+            <h3 class="text-2xl font-bold text-slate-800 mb-2">${data.title}</h3>
+            <p class="text-slate-600">${data.content}</p>
+        `;
+    }
+
+    processSteps.forEach(step => {
+        step.addEventListener('click', () => {
+            const process = step.dataset.process;
+            processSteps.forEach(s => s.classList.remove('active'));
+            step.classList.add('active');
+            updateProcessContent(process);
+        });
+    });
+    
+    updateProcessContent('empathize');
+
+    featureCards.forEach(card => {
+        const button = card.querySelector('.toggle-details');
+        const details = card.querySelector('.feature-details');
+        button.addEventListener('click', () => {
+            const isHidden = details.classList.toggle('hidden');
+            button.textContent = isHidden ? 'Learn More' : 'Show Less';
+        });
+    });
+});
+</script>
+
+</body>
+</html>
